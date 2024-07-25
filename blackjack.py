@@ -21,7 +21,7 @@ def card_draw(player):
         else:
             continue
 
-def sum_win(player_sum , device_sum):
+def sum_win(no_rounds):
     no_rounds = rounds()
     sum = random.choice(options)
     player = player_choice()
@@ -30,20 +30,22 @@ def sum_win(player_sum , device_sum):
         player_sum = sum + player
         device_sum = sum + device
     if player_sum > 21 and device_sum<21:
-        print("You lost!")
+        return "You lost!"
     elif device_sum > 21 and player_sum<21:
-        print("You won!")
+        return "You won!"
     elif player_sum > 21 and device_sum > 21 :
-        print("Disqualification!")
+        return "Disqualification!"
     while(player_sum<21 and device_sum<21):
         if player_sum == device_sum:
-            print("It's a Tie!")
+            return "It's a Tie!"
         elif player_sum < device_sum:
-            print("You lost!")
+            return "You lost!"
         else:
-            print("You won!")
+            return "You won!"
 
 player = player_choice()
 computer = device_choice()
 
 round_number = rounds()
+
+card = card_draw(player)
